@@ -17,6 +17,12 @@ type (
 		// If an update requires a change of scene, it should be returned here. If an update
 		// does not require a scene change, the return value of the first parameter should
 		// be nil.
-		Update(*input.State) (Scene, error)
+		Update(*input.State, *Info) (Scene, error)
+	}
+
+	// The Info type contains general information that all scenes should be aware of
+	Info struct {
+		Width  int // The screen width
+		Height int // The screen height
 	}
 )

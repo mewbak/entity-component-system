@@ -54,6 +54,10 @@ func (g *Game) update() error {
 	// Update the current scene using the latest input state
 	newScene, err := g.scene.Update(
 		input.GetState(),
+		&scene.Info{
+			Width:  g.config.Width,
+			Height: g.config.Height,
+		},
 	)
 
 	if err != nil {
