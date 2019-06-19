@@ -1,3 +1,4 @@
+// Package scene contains types for managing scenes within the game.
 package scene
 
 import (
@@ -9,11 +10,10 @@ type (
 	// The Scene interface defines methods for updating and rendering a scene within
 	// the game.
 	Scene interface {
-		// Draw should have all contents in the scene drawn to the provided
-		// image.
+		// Draw all contents in the scene to the provided screen.
 		Draw(*ebiten.Image) error
 
-		// Update to update all entities in the scene based on the provided parameters.
+		// Updates all entities in the scene based on the provided parameters.
 		// If an update requires a change of scene, it should be returned here. If an update
 		// does not require a scene change, the return value of the first parameter should
 		// be nil.
