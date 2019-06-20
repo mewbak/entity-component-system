@@ -9,11 +9,11 @@ const (
 type (
 	WASDControl struct {
 		Position *Position
-		Speed    int
+		Speed    float64
 	}
 )
 
-func NewWASDControl(p *Position, speed int) *WASDControl {
+func NewWASDControl(p *Position, speed float64) *WASDControl {
 	return &WASDControl{
 		Position: p,
 		Speed:    speed,

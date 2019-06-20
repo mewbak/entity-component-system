@@ -5,6 +5,7 @@ import (
 	"github.com/davidsbond/game/internal/system"
 	"github.com/davidsbond/game/pkg/input"
 	"github.com/davidsbond/game/pkg/scene"
+	"github.com/hajimehoshi/ebiten"
 )
 
 type (
@@ -16,7 +17,7 @@ func NewWASDMovement() system.System {
 	return &wasdMovement{}
 }
 
-func (m *wasdMovement) Run(state *input.State, scene *scene.Scene) {
+func (m *wasdMovement) Run(_ *ebiten.Image, state *input.State, scene *scene.Scene) error {
 	for _, e := range scene.GetEntities() {
 		cmps := e.GetComponentsOfType(components.TypeWASDControl)
 

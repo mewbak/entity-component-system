@@ -5,10 +5,11 @@ package system
 import (
 	"github.com/davidsbond/game/pkg/input"
 	"github.com/davidsbond/game/pkg/scene"
+	"github.com/hajimehoshi/ebiten"
 )
 
 type (
 	System interface {
-		Run(state *input.State, scene *scene.Scene)
+		Run(screen *ebiten.Image, state *input.State, scene *scene.Scene) error
 	}
 )
