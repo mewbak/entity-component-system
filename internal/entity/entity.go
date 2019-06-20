@@ -2,19 +2,42 @@
 package entity
 
 import (
-	"github.com/davidsbond/game/internal/input"
-	"github.com/davidsbond/game/internal/scene"
-	"github.com/hajimehoshi/ebiten"
+	"fmt"
+
+	"github.com/davidsbond/game/internal/component"
 )
 
 type (
-	// The Entity interface defines methods for updating and rendering an entity within
+	// The Entity type contains methods for updating and rendering an entity within
 	// the game.
-	Entity interface {
-		// Draw should draw the entity to the provided screen
-		Draw(*ebiten.Image) error
-
-		// Update the current state of the entity
-		Update(*input.State, *scene.Info) error
+	Entity struct {
+		id         string
+		components map[string]component.Component
 	}
 )
+
+func New(id string) *Entity {
+	return &Entity{
+		id:         id,
+		components: make(map[string]component.Component),
+	}
+}
+
+func (e *Entity) AddComponent(name string, cmp component.Component) error {
+	if cmp, ok := e.components[name]; ok {
+		return fmt.Errorf("entity %s already has a %T component named %s", e.id, cmp, name)
+	}
+
+	e.components[name] = cmp
+	return nil
+}
+
+func (e *Entity) GetComponentsOfType(t component.Type) (out []component.Component) {
+	for _, cmp := range e.components {
+		if cmp.GetType() == t {
+			out = append(out, cmp)
+		}
+	}
+
+	return
+}

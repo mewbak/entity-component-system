@@ -2,8 +2,8 @@
 package main
 
 import (
-	"github.com/davidsbond/game/internal/config"
-	"github.com/davidsbond/game/internal/game"
+	"github.com/davidsbond/game/pkg/config"
+	"github.com/davidsbond/game/pkg/game"
 )
 
 func main() {
