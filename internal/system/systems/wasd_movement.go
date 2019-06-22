@@ -2,8 +2,8 @@ package systems
 
 import (
 	"github.com/davidsbond/game/internal/component/components"
-	"github.com/davidsbond/game/pkg/input"
-	"github.com/davidsbond/game/pkg/scene"
+	"github.com/davidsbond/game/internal/input"
+	"github.com/davidsbond/game/internal/scene"
 	"github.com/hajimehoshi/ebiten"
 )
 

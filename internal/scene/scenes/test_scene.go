@@ -2,7 +2,7 @@ package scenes
 
 import (
 	"github.com/davidsbond/game/internal/entity/entities"
-	"github.com/davidsbond/game/pkg/scene"
+	"github.com/davidsbond/game/internal/scene"
 )
 
 func TestScene() (*scene.Scene, error) {

@@ -3,12 +3,12 @@
 package game
 
 import (
+	"github.com/davidsbond/game/internal/config"
+	"github.com/davidsbond/game/internal/input"
+	"github.com/davidsbond/game/internal/scene"
+	"github.com/davidsbond/game/internal/scene/scenes"
 	"github.com/davidsbond/game/internal/system"
 	"github.com/davidsbond/game/internal/system/systems"
-	"github.com/davidsbond/game/pkg/config"
-	"github.com/davidsbond/game/pkg/input"
-	"github.com/davidsbond/game/pkg/scene"
-	"github.com/davidsbond/game/pkg/scene/scenes"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
