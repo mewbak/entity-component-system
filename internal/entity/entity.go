@@ -2,8 +2,6 @@
 package entity
 
 import (
-	"fmt"
-
 	"github.com/davidsbond/game/internal/component"
 )
 
@@ -11,25 +9,16 @@ type (
 	// The Entity type contains methods for updating and rendering an entity within
 	// the game.
 	Entity struct {
-		id         string
-		components map[string]component.Component
+		components []component.Component
 	}
 )
 
-func New(id string) *Entity {
-	return &Entity{
-		id:         id,
-		components: make(map[string]component.Component),
-	}
+func New() *Entity {
+	return &Entity{}
 }
 
-func (e *Entity) AddComponent(name string, cmp component.Component) error {
-	if cmp, ok := e.components[name]; ok {
-		return fmt.Errorf("entity %s already has a %T component named %s", e.id, cmp, name)
-	}
-
-	e.components[name] = cmp
-	return nil
+func (e *Entity) AddComponent(cmp component.Component) {
+	e.components = append(e.components, cmp)
 }
 
 func (e *Entity) GetComponentsOfType(t component.Type) (out []component.Component) {

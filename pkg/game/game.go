@@ -3,12 +3,11 @@
 package game
 
 import (
-	"github.com/davidsbond/game/internal/config"
-	"github.com/davidsbond/game/internal/input"
 	"github.com/davidsbond/game/internal/scene"
 	"github.com/davidsbond/game/internal/scene/scenes"
 	"github.com/davidsbond/game/internal/system"
 	"github.com/davidsbond/game/internal/system/systems"
+	"github.com/davidsbond/game/pkg/input"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
@@ -16,7 +15,7 @@ import (
 type (
 	// The Game type encompasses the entire game being ran.
 	Game struct {
-		config  *config.Config
+		config  *Config
 		title   string
 		scene   *scene.Scene
 		systems []system.System
@@ -24,7 +23,7 @@ type (
 )
 
 // New creates a new game based on the provided configuration.
-func New(cnf *config.Config) *Game {
+func New(cnf *Config) *Game {
 	return &Game{
 		config: cnf,
 		title:  "A game",

@@ -2,11 +2,14 @@ package systems
 
 import (
 	"github.com/davidsbond/game/internal/component/components"
-	"github.com/davidsbond/game/internal/input"
 	"github.com/davidsbond/game/internal/scene"
+	"github.com/davidsbond/game/pkg/input"
 	"github.com/hajimehoshi/ebiten"
 )
 
+// The WASDMovement system finds components of type components.TypeWASDControl and
+// updates their position based on the current state of the W, A, S and D keys on the
+// keyboard.
 func WASDMovement(_ *ebiten.Image, state *input.State, scene *scene.Scene) error {
 	for _, e := range scene.GetEntities() {
 		cmps := e.GetComponentsOfType(components.TypeWASDControl)

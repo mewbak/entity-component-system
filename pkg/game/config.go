@@ -1,6 +1,6 @@
 // Package config contains methods and types for reading configuration
 // data for the game.
-package config
+package game
 
 import "gopkg.in/ini.v1"
 

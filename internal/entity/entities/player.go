@@ -3,11 +3,12 @@ package entities
 import (
 	"github.com/davidsbond/game/internal/component/components"
 	"github.com/davidsbond/game/internal/entity"
-	"github.com/hashicorp/go-multierror"
 )
 
+// NewPlayer creates a new player-controlled entity that is represented
+// by a cartoon of a sleeping cat.
 func NewPlayer() (*entity.Entity, error) {
-	pl := entity.New("player")
+	pl := entity.New()
 
 	pos := components.NewPosition()
 	wasd := components.NewWASDControl(pos, 1)
@@ -17,9 +18,9 @@ func NewPlayer() (*entity.Entity, error) {
 		return nil, err
 	}
 
-	return pl, multierror.Append(
-		pl.AddComponent("position", pos),
-		pl.AddComponent("wasd-control", wasd),
-		pl.AddComponent("sprite", spr),
-	).ErrorOrNil()
+	pl.AddComponent(pos)
+	pl.AddComponent(wasd)
+	pl.AddComponent(spr)
+
+	return pl, nil
 }

@@ -2,12 +2,11 @@
 package main
 
 import (
-	"github.com/davidsbond/game/internal/config"
-	"github.com/davidsbond/game/internal/game"
+	"github.com/davidsbond/game/pkg/game"
 )
 
 func main() {
-	cnf, err := config.Load()
+	cnf, err := game.Load()
 
 	if err != nil {
 		panic(err)

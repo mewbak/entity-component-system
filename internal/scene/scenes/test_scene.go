@@ -5,6 +5,7 @@ import (
 	"github.com/davidsbond/game/internal/scene"
 )
 
+// TestScene generates a scene for testing
 func TestScene() (*scene.Scene, error) {
 	sc := scene.New("test_scene", 100, 100)
 
