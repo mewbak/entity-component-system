@@ -1,0 +1,19 @@
+package scenes
+
+import (
+	"github.com/davidsbond/game/internal/entity/entities"
+	"github.com/davidsbond/game/pkg/scene"
+)
+
+func TestScene() (*scene.Scene, error) {
+	sc := scene.New("test_scene", 100, 100)
+
+	pl, err := entities.NewPlayer()
+
+	if err != nil {
+		return sc, err
+	}
+
+	sc.AddEntity(pl)
+	return sc, nil
+}

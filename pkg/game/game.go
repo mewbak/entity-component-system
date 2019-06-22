@@ -8,6 +8,7 @@ import (
 	"github.com/davidsbond/game/pkg/config"
 	"github.com/davidsbond/game/pkg/input"
 	"github.com/davidsbond/game/pkg/scene"
+	"github.com/davidsbond/game/pkg/scene/scenes"
 	"github.com/hajimehoshi/ebiten"
 	"github.com/hajimehoshi/ebiten/ebitenutil"
 )
@@ -32,8 +33,15 @@ func New(cnf *config.Config) *Game {
 
 // Start the game.
 func (g *Game) Start() error {
-	g.addSystem(systems.NewWASDMovement())
-	g.addSystem(systems.NewSpriteRenderer())
+	sc, err := scenes.TestScene()
+
+	if err != nil {
+		return err
+	}
+
+	g.scene = sc
+	g.addSystem(systems.WASDMovement)
+	g.addSystem(systems.SpriteRenderer)
 
 	ebiten.SetFullscreen(g.config.FullScreen)
 	return ebiten.Run(g.run, g.config.Width, g.config.Height, 1, g.title)
@@ -43,7 +51,7 @@ func (g *Game) run(screen *ebiten.Image) error {
 	state := input.GetState()
 
 	for _, sys := range g.systems {
-		if err := sys.Run(screen, state, g.scene); err != nil {
+		if err := sys(screen, state, g.scene); err != nil {
 			if err := ebitenutil.DebugPrint(screen, err.Error()); err != nil {
 				return err
 			}

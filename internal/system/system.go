@@ -9,7 +9,5 @@ import (
 )
 
 type (
-	System interface {
-		Run(screen *ebiten.Image, state *input.State, scene *scene.Scene) error
-	}
+	System func(screen *ebiten.Image, state *input.State, scene *scene.Scene) error
 )
