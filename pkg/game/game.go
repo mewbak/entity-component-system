@@ -39,6 +39,7 @@ func (g *Game) Start() error {
 	}
 
 	g.scene = sc
+	g.addSystem(systems.TilemapRenderer)
 	g.addSystem(systems.WASDMovement)
 	g.addSystem(systems.SpriteRenderer)
 

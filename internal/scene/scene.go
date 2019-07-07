@@ -3,6 +3,7 @@ package scene
 
 import (
 	"github.com/davidsbond/game/internal/entity"
+	"github.com/davidsbond/game/pkg/tile"
 )
 
 type (
@@ -12,14 +13,21 @@ type (
 	Scene struct {
 		name     string
 		entities []*entity.Entity
+
+		Tilemap *tile.Map
+		Width   int
+		Height  int
 	}
 )
 
 // New creates a new Scene with the give name, width and
 // height.
-func New(name string, w, h float64) *Scene {
+func New(name string, tilemap *tile.Map, width, height int) *Scene {
 	return &Scene{
-		name: name,
+		name:    name,
+		Tilemap: tilemap,
+		Width:   width,
+		Height:  height,
 	}
 }
 

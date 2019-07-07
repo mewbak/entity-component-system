@@ -11,6 +11,10 @@ import (
 // The SpriteRenderer system finds components of type components.TypeSprite and renders them
 // onto the screen at their specified position.
 func SpriteRenderer(screen *ebiten.Image, _ *input.State, scene *scene.Scene) error {
+	if ebiten.IsDrawingSkipped() {
+		return nil
+	}
+
 	var errs []error
 
 	for _, e := range scene.GetEntities() {
