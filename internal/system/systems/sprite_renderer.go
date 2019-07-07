@@ -19,8 +19,11 @@ func SpriteRenderer(screen *ebiten.Image, _ *input.State, scene *scene.Scene) er
 		for _, cmp := range cmps {
 			sprite := cmp.(*components.Sprite)
 
+			geo := ebiten.TranslateGeo(sprite.Position.X, sprite.Position.Y)
+			geo.Rotate(sprite.Position.Rotation)
+
 			err := screen.DrawImage(sprite.Image, &ebiten.DrawImageOptions{
-				GeoM: ebiten.TranslateGeo(sprite.Position.X, sprite.Position.Y),
+				GeoM: geo,
 			})
 
 			if err != nil {

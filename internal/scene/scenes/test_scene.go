@@ -7,7 +7,7 @@ import (
 
 // TestScene generates a scene for testing
 func TestScene() (*scene.Scene, error) {
-	sc := scene.New("test_scene", 100, 100)
+	sc := scene.New("test_scene", 300, 300)
 
 	pl, err := entities.NewPlayer()
 

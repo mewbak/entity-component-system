@@ -15,8 +15,8 @@ type (
 	// The Sprite component represents an image at a certain position
 	// within the game screen.
 	Sprite struct {
-		Image    *ebiten.Image
-		Position *Position
+		*Position
+		Image *ebiten.Image
 	}
 )
 

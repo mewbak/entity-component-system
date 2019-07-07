@@ -11,8 +11,6 @@ type (
 	// a number of entities that relevant systems will interact with
 	Scene struct {
 		name     string
-		width    float64
-		height   float64
 		entities []*entity.Entity
 	}
 )
@@ -21,9 +19,7 @@ type (
 // height.
 func New(name string, w, h float64) *Scene {
 	return &Scene{
-		name:   name,
-		width:  w,
-		height: h,
+		name: name,
 	}
 }
 
@@ -35,13 +31,4 @@ func (s *Scene) AddEntity(entity *entity.Entity) {
 // GetEntities returns all entities within the scene
 func (s *Scene) GetEntities() []*entity.Entity {
 	return s.entities
-}
-
-// GetBoundaries returns the minimum and maximum x and y values for
-// any entity confined within the scene.
-func (s *Scene) GetBoundaries() (minX, minY, maxX, maxY float64) {
-	maxX = s.width
-	maxY = s.height
-
-	return
 }

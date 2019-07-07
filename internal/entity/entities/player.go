@@ -12,6 +12,7 @@ func NewPlayer() (*entity.Entity, error) {
 
 	pos := components.NewPosition()
 	wasd := components.NewWASDControl(pos, 1)
+
 	spr, err := components.NewSprite("assets/gopher.png", pos)
 
 	if err != nil {

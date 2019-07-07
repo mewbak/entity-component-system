@@ -24,22 +24,21 @@ func WASDMovement(_ *ebiten.Image, state *input.State, scene *scene.Scene) error
 	return nil
 }
 
-func updatePosition(state input.KeyBoardState, ctrl *components.WASDControl, scene *scene.Scene) {
-	minX, minY, maxX, maxY := scene.GetBoundaries()
+func updatePosition(state input.KeyBoardState, ctrl *components.WASDControl, _ *scene.Scene) {
 
-	if state["W"] && ctrl.Position.Y > minY {
+	if state["W"] {
 		ctrl.Position.Y -= ctrl.Speed
 	}
 
-	if state["S"] && ctrl.Position.Y < maxY {
+	if state["S"] {
 		ctrl.Position.Y += ctrl.Speed
 	}
 
-	if state["A"] && ctrl.Position.X > minX {
+	if state["A"] {
 		ctrl.Position.X -= ctrl.Speed
 	}
 
-	if state["D"] && ctrl.Position.X < maxX {
+	if state["D"] {
 		ctrl.Position.X += ctrl.Speed
 	}
 }

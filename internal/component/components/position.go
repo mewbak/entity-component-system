@@ -16,6 +16,9 @@ type (
 
 		// Location on the y-axis.
 		Y float64
+
+		// The rotation
+		Rotation float64
 	}
 )
 
